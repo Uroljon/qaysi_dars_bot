@@ -134,7 +134,7 @@ bot.on("message", async (data) => {
         let random = Math.round(Math.random() * (joke.length - 1))
         answer = `📌 Joke № ${random}: \n\n${joke[random].setup}🤔\n${joke[random].punchline}😄🤪`;
     }
-console.log(day, week_days[day], timetable[day]);
+console.log(date.getDay(), new Date.getDay());
     bot.sendMessage(userId, answer, {
         reply_markup: keyboard,
         parse_mode: "html"
