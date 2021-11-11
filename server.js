@@ -24,7 +24,7 @@ bot.on("message", async (data) => {
         resize_keyboard: true
     }
     let answer = "";
-    let date = new Date(data.date * 1000)
+    let date = new Date()
     let day = date.getDay() - 1;
     const week_days = ["Dushanba", "Seshanba", "Chorshanba", "Payshanba", "Juma"]
 
@@ -142,7 +142,7 @@ bot.on("message", async (data) => {
     })
 
 })
-// bot.sendMessage(1296799837, "bot is online !")
+bot.sendMessage(1296799837, "bot is online !")
 // timetable
 // 13:30 => 14:50
 // 15:00 => 16:20
