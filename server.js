@@ -130,12 +130,11 @@ bot.on("message", async (data) => {
             answer += `${pair.pair}. <b>${pair.class}</b> - [ ${pair.teacher} ] 👉 ${pair.room}\n`
         })
     } else if (data.text?.match(/(joke)|(Tell me a joke 🤠)/gi)) {
-        console.log("joek");
         let joke = require("./joke")
         let random = Math.round(Math.random() * (joke.length - 1))
         answer = `📌 Joke № ${random}: \n\n${joke[random].setup}🤔\n${joke[random].punchline}😄🤪`;
     }
-
+console.log(day, week_days[day], timetable[day]);
     bot.sendMessage(userId, answer, {
         reply_markup: keyboard,
         parse_mode: "html"
