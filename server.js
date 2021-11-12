@@ -113,8 +113,7 @@ bot.on("message", async (data) => {
         timetable[1].forEach((pair) => {
             answer += `${pair.pair}. <b>${pair.class}</b> - [ ${pair.teacher} ] 👉 ${pair.room}\n`
         })
-    }
-    else if (data.text?.match(/(chorshanba)|(wednesday)/gi)) {
+    } else if (data.text?.match(/(chorshanba)|(wednesday)/gi)) {
         answer = `📌 ${week_days[2]} \n\n`;
         timetable[2].forEach((pair) => {
             answer += `${pair.pair}. <b>${pair.class}</b> - [ ${pair.teacher} ] 👉 ${pair.room}\n`
@@ -133,6 +132,8 @@ bot.on("message", async (data) => {
         let joke = require("./joke")
         let random = Math.round(Math.random() * (joke.length - 1))
         answer = `📌 Joke № ${random}: \n\n${joke[random].setup}🤔\n${joke[random].punchline}😄🤪`;
+    } else{
+        answer = "Bu gapingizni hali tushunmayman. Developer aka endi o'rgatyapti :)"
     }
     bot.sendMessage(userId, answer, {
         reply_markup: keyboard,
