@@ -61,18 +61,23 @@ bot.on("message", async (data) => {
         let hour = date.getHours()
         let minute = date.getMinutes()
         let pair = "";
-        if (hour <= 13) {
+        if ((hour === 13 && minute <30) || (hour <13)) {
             answer = day < 3 ? `Mr Shin xafa bo'ladi. Tezro bormasaiz bomaydi 🏃🏻\n` : `Darsiz endi boshlanadi. Bemalol kelavering 🚶🏻‍♂️ \n`;
             answer += `Bugun 📌 ${week_days[day]} : 13:30 da \n`
             pair = timetable[day][0]
-        } else if (hour > 13 && hour < 15) {
-            pair = timetable[day][0]
-        } else if (hour >= 15 && (hour <= 16 && minute <= 20)) {
-            pair = timetable[day][1]
-        } else if ((hour >= 16 && minute >= 30) && hour < 18) {
-            pair = timetable[day][2]
-        } else {
+        } else if ((hour === 13 && minute >=30) || (hour === 14 && minute <=50)) { 
+            pair = timetable[day][0] //1 => [13:30 - 14:50]
+        } else if (hour >= 15 && (hour <= 16 && minute <= 20)) { 
+            pair = timetable[day][1] //2 => [15:00 - 16:20]
+        } else if ((hour >= 16 && minute >= 30) && hour < 18) { 
+            pair = timetable[day][2] //3 => [16:30 - 17:50]
+        } else if (hour >18) {
             bot.sendMessage(userId, "Bugungi darsiz tugab bo'ldi. Siz darsda uxlab qoluvdizmi deyman🤔", {
+                reply_markup: keyboard,
+            })
+            return
+        } else {
+            bot.sendMessage(userId, "Hozir tanaffus. Keyingi darsni tekshiring. Aniq qandaydir qiziq bir fan sizni kutib turibdi 😛", {
                 reply_markup: keyboard,
             })
             return
@@ -89,15 +94,15 @@ bot.on("message", async (data) => {
         let hour = date.getHours()
         let minute = date.getMinutes()
         let pair = "";
-        if (hour <= 13) {
+        if ((hour === 13 && minute <30) || (hour <13)) {
             answer = `1-para endi boshlanadi-ku😧 \n`
             pair = timetable[day][0]
-        } else if (hour > 13 && hour < 15) { //1
+        } else if ((hour === 13 && minute >=30) || (hour === 14 && minute <=59)) { //1
             pair = timetable[day][1]
-        } else if (hour >= 15 && (hour <= 16 && minute <= 20)) {//2
+        } else if (hour >= 15 && (hour <= 16 && minute <= 29)) {//2
             pair = timetable[day][2]
         } else {
-            bot.sendMessage(userId, "Bugungi darsiz tugab bo'ldi. Siz darsda uxlab qoluvdizmi deyman🤔", {
+            bot.sendMessage(userId, "Keyingi dars jadvalda yo'q yoki chopilgan 🪓. Bemalol 🏘 ga 🚶🏻", {
                 reply_markup: keyboard,
             })
             return
