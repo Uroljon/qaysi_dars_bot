@@ -24,7 +24,7 @@ module.exports = [
             pair: 1,
             class: "Business",
             teacher: "Mr Shin",
-            room: "C 448"
+            room: "A 119"
         },
         {
             pair: 2,
